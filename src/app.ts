@@ -2,6 +2,7 @@ import express from 'express';
 
 import mongoose from 'mongoose';
 import { CD, Track } from './models';
+import dotenv from 'dotenv';
 
 // Define an interface for the connection options
 interface MongooseConnectionOptions extends mongoose.ConnectOptions {
@@ -9,10 +10,12 @@ interface MongooseConnectionOptions extends mongoose.ConnectOptions {
   useUnifiedTopology: boolean;
 }
 
+dotenv.config();
+
 // Then use that interface when you declare your mongooseOptions object
 const mongooseOptions: MongooseConnectionOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
-const mongoUri = 'mongodb://localhost:27017/cd-collection';
+const mongoUri: string = process.env.MONGO_URI!;
 mongoose.connect(mongoUri, mongooseOptions);
 
 mongoose.connection.on('error', (err) => {
