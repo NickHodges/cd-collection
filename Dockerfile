@@ -2,7 +2,7 @@
 FROM node:20
 
 # Set the working directory in the container to /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /usr/src
 
 # Copy the current directory contents into the container at /usr/src/app
 COPY . .
