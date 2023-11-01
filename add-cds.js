@@ -17,7 +17,7 @@ const cds = [
 async function addCds() {
   for (let cd of cds) {
     try {
-      const response = await axios.post('http://localhost:3000/cds', cd);
+      const response = await axios.post('https://app-61786.on-aptible.com/cds', cd);
       console.log('Added CD:', response.data);
     } catch (error) {
       console.error('Error adding CD:', error.message);
